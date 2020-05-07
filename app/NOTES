@@ -1,0 +1,458 @@
+apiDocumentor By PostMan
+johnlito1996@gmail.com
+ntcox
+
+3:42 PM 1-2-2018
+=> Implements the relationships on the laravel eloquent models
+
+1:M relationship is hasMany() transaction
+
+------------------------------------------------------------------
+
+M:M relationship  is belongsToMany() 
+
+! as always a many to many relationship requires a pivot table to be implemented
+
+------------------------------------------------------------------
+
+1:1 relationship is belongsTo()
+
+------------------------------------------------------------------
+
+11:47 AM 01-07-2019
+
+Types of errorshit
+  
+  ~ ValidationException     		=> form validation exception
+  ~ ModelNotFoundException  		=> specified model intance not found
+  ~ AuthenticationException 		=> a user model intance was not authenticate to perform the task
+   -> Authentication = allow maka pasok
+   -> Authorization  = allow gawin ang bagay na to
+  ~ AuthorizationException 			=> user model instance was not authorize to do the thing he/she want 
+  ~ NotFoundHttpException   	 	=> throw when the specified endpoint was undefined
+  ~ MethodNotAllowedHttpException 	=> the HTTP request for a particular endpoint was wrong
+
+  ~ General HTTP Exception => any other http exception will be handled here
+
+  ------------------------------------------------------------------
+
+  12:19 PM 01-07-2019
+	Catching Exceptions When Removing Related Resources
+	Section 15, Lecture 70
+
+    ex. database foreignkey
+
+  ~ QueryException
+
+  1:50 PM 01-07-2018
+  	Handling Unexpected Exceptions
+	Section 15, Lecture 71
+
+	=> specifying if the app.debug was true or false e value
+
+  ------------------------------------------------------------------
+
+  2:04 PM 01-07-2019
+  => Implementing global scopes for the buyer model specifying the restriction that a buyer::has('transaction relationship')
+
+  2:13 PM 01-07-2019
+  => Resolving Seller Using Laravel Global Scopes
+	 Section 16, Lecture 74
+
+  ------------------------------------------------------------------
+
+  2:19 PM 01-07-2019
+  => Modifying the Migrations for Soft Deleting
+	 Section 17, Lecture 75
+
+  ------------------------------------------------------------------
+
+  2:54 PM 01-07-2019
+  => Implementing the Index Method for CategoryController
+	 Section 18, Lecture 77
+
+  ------------------------------------------------------------------
+
+  3:53 PM 01-07-2019 
+  => Implementing the Store Method for CategoryController
+	 Section 18, Lecture 79
+
+  ------------------------------------------------------------------
+
+  4:02 PM 01-07-2019
+  => Implementing the Update Method for CategoryController
+	 Section 18, Lecture 80
+
+  ------------------------------------------------------------------
+
+  10:18 AM 01-08-2019
+  => Implementing the Index Method for ProductControllerSection 19, Lecture 82
+
+  ------------------------------------------------------------------
+  
+  10:43 AM 01-08-2019
+  => exercise shit  
+
+  ------------------------------------------------------------------
+
+  11:12 AM 01-08-2019
+  => Complex controller 
+     ~ Controller that interact with multiple resources
+  Implementing the Index Method for TransactionCategoryController
+  Section 21, Lecture 86
+  TransactionCategoryController => category for a specific transaction
+  - category, product, transaction
+
+  12:02 PM 01-08-2019
+  => Implementing the Index Method for TransactionSellerController
+     Section 21, Lecture 87
+
+     ~ Obtaining specific seller of a particular transaction
+
+  ------------------------------------------------------------------
+
+  12:42 PM 01-08-2019d
+  => Implementing the Index Method for BuyerTransactionController
+     Section 22, Lecture 88
+
+     -> listing all the transaction of a specific buyer
+
+  ------------------------------------------------------------------
+
+  1:17 PM 01-08-2019
+  => Implementing the Index Method for BuyerProductController
+     Section 22, Lecture 89
+
+     -> The Eager loading concept => basically it is a process of elimination of collection item query by directly including the  desired collection from another collection.
+
+     -> Returning of Products  that the buyer order including its transction
+     buyer and transction when we invoke the transaction in the buyer we gonna have a collection not an intance of the transaction model
+
+  ------------------------------------------------------------------
+  2:18 PM 01-08-2019
+  => Implementing the Index Method for BuyerSellerController
+     Section 22, Lecture 90
+
+     -> Returning a 1 buyer and its transactions incorporating with him/her
+
+     Buyer model must go first in the Transaction model, then the product of thoese transactions and finally the seller of each product
+
+  ------------------------------------------------------------------
+  2:59 PM 01-22-2019
+  => Implementing the BuyerCategory Controller
+  => Using a specific buyer then return all the categories regards on the transactions -> products.category_id 
+
+  ------------------------------------------------------------------
+  3:20 PM 01-22-2019
+  => Implementing the CategoryProductController index method 
+  => allow to retrieve ALL products of a particular category
+
+  ------------------------------------------------------------------
+  4:12 PM 01-22-2019
+  => Implementing the Index Method for CategorySellerController
+     Section 23, Lecture 93
+  => using a particular category then return all the sellers intanct on it
+
+  ------------------------------------------------------------------
+  4:25 PM 01-22-2019
+  => Implementing the Index Method for CategoryTransactionController
+     Section 23, Lecture 94
+  => Show all the transaction of a specific category
+
+  ------------------------------------------------------------------
+  10:48 AM 01-23-2019
+  => Implementing the Index Method for CategoryBuyerController
+     Section 23, Lecture 95
+  => Show all buyers using a particular category
+
+  ------------------------------------------------------------------
+  12:52 PM 01-23-2019
+  => Removing the Pivot Table from the Results
+     Section 23, Lecture 96
+  => Removal of the Pivot section (ex. categories/{category}/products)
+
+  ------------------------------------------------------------------
+  1:18 PM 01-23-2019
+  => Implementing the Index Method for SellerTransactionController
+     Section 24, Lecture 97
+  => Using 1 seller gives the list of all transactions related on his/her
+
+  ------------------------------------------------------------------
+  1:50 AM 01-23-2019  
+  => Implementing the Index Method for SellerCategoryController
+     Section 24, Lecture 98
+  => 1 Seller return all of his/her Categories
+
+  ------------------------------------------------------------------
+  11:39 AM 01-23-2019
+  => Implementing the Index Method for SellerBuyerController
+     Section 24, Lecture 99
+  => 1 Seller return all the products->transactions->buyers collection
+
+  ------------------------------------------------------------------
+  4:20 PM 01-24-2019
+  => Implementing the Index Method for SellerProductController
+     Section 24, Lecture 100
+
+  ------------------------------------------------------------------
+  4:39 PM 01-24-2019
+  => Implementing the Store Method for SellerProductController
+     Section 24, Lecture 101
+
+  ------------------------------------------------------------------
+  1:35 PM 01-29-2019
+  => [Challenge] Implementing the Index Operation of ProductCategory
+     Section 25, Lecture 106
+
+  ------------------------------------------------------------------
+  2:45 PM 01-29-2019
+  => Implementing the Store Operation for ProductBuyerTransaction
+     Section 25, Lecture 109
+
+  => Responsible for the {Listing the Buying portion of a particular buyer on a particular Product then logging it into the Transaction Table for refference } event on the system
+
+  ------------------------------------------------------------------
+  11:34 PM 01-30-2019
+  => Handling the Products Availability Using Events
+     Section 25, Lecture 110
+  => auto detection if a specific product quantity reach into 0 then that product must be tag the status UNAVAILABLE desu
+  => Using the [laravel events]
+  => listen for the update of the product [listening if the quantity of a product change to zero and its status still available]
+
+  ------------------------------------------------------------------
+  12:24 PM 01-30-2019
+  => Preparing the API for Images Uploading
+     Section 26, Lecture 111
+  => Just the preparation for uploading the image
+
+  ------------------------------------------------------------------
+  12:43 PM 01-30-2019
+  => Removing the Image When Deleting a Product
+     Section 26, Lecture 113
+
+  ------------------------------------------------------------------
+  12:57 PM 01-30-2019
+  => Updating the Image When Editing a product // SellerProductController
+     Section 26, Lecture 114
+  => The image must remove the old image regardless if the image was the same or not
+
+  => The magic of METHOD SPOFFING
+     => process of adding a _method request parameter to specify that the form was using PUT/PATH or DEL request
+     => www-form-urlencode unable to upload a new image
+
+  ------------------------------------------------------------------
+  1:51 PM 01-30-2019
+  => Preparing the Laravel Project for Email Sending
+     Section 27, Lecture 115
+
+  => using the guzzlehttp/guzzle  to send some email at the [sparkpost, mailgun]
+  => using of different email shit
+
+  MAILGUN_DOMAIN=null
+  MAILGUN_SECRET=null
+  SPARKPOST_SECRET=null
+
+  MAIL_FROM_ADDRESS=restinggod@resfulshit.dev
+  MAIL_FROM_NAME="RESTful API Zzz"  -> if the .env value with space use a double quotes
+
+  ------------------------------------------------------------------
+  2:06 PM 01-30-2019
+  => Implementing the Verification System
+     Section 27, Lecture 116
+
+  => create a endpoint that accept the user verification_token
+     then check if the verification token exist with that particular email_address
+     then update the user properties to become verified 
+     and lastly remove the verification token so that the given user cannot make any further request for verifying its account at the system
+
+  ------------------------------------------------------------------
+  2:33 PM 01-30-2019
+  => Creating the Laravel Mailable for User Created
+     Section 27, Lecture 117
+
+  ------------------------------------------------------------------   
+  Implementing the UserCreated Mailable
+  Section 27, Lecture 118
+
+  ------------------------------------------------------------------   
+  2:50 PM 01-30-2019
+  => Send Verification Email Using Events
+     Section 27, Lecture 119
+
+  => using the mailable to send the email into the user email address
+  => every time when the user has been successfully created
+
+  ------------------------------------------------------------------ 
+  3:08 PM 01-30-2019
+  => Solving the Problem with Factories
+     Section 27, Lecture 120
+
+  => Solving the error upon running the factories the code base will be sending some useless emails
+
+  ------------------------------------------------------------------ 
+  4:11 PM 01-30-2019
+  => Creating the Mailable for User Mail Changed
+     Section 27, Lecture 121
+
+  => Implementation
+
+  ------------------------------------------------------------------ 
+  4:16 PM 01-30-2019
+  => Send Verification for Email Changed Using Events
+     Section 27, Lecture 123
+
+  => fire an eevent just when the user email was changed
+
+  ------------------------------------------------------------------ 
+  4:26 PM 01-30-2019
+  => Re-sending the Verification Email If Requested
+     Section 27, Lecture 124
+
+  => Just sending some verification token only if the user could'nt get the 1st email verification
+     and the current user is not yet verified
+
+  ------------------------------------------------------------------ 
+  4:53 PM 01-30-2019
+  => Dealing with Failing-Prone Actions
+     Section 27, Lecture 125
+
+  => Allow us to handle failing prone actions retry different action waiting for a result.
+  => Ex. Sending email [service maybe error]
+
+  ------------------------------------------------------------------ 
+  5:30 PM 01-30-2019
+  => Using Laravel Markdown Mailables
+     Section 27, Lecture 126
+
+  => Creting a laravel markdown mailable
+  ex. php artisan make:mail Test -m emails.test
+
+  ------------------------------------------------------------------ 
+  10:47 AM 01-31-2019
+  => About the Middleware and How it Works in Laravel
+     Section 28, Lecture 127
+
+  => The beauty of middleware shit
+  => act over the request
+  => act over the response 
+  => or maybe both in the cycle
+
+  ------------------------------------------------------------------ 
+  11:38 AM 01-31-2019
+  => Creating a Custom Middleware
+     Section 28, Lecture 128
+
+  => create a middleware that adds a signature in every response
+
+  ------------------------------------------------------------------ 
+  12:46 PM 01-31-2019
+  => About Transformers and Why to Use It
+     Section 29, Lecture 131
+
+  => Transformation of the PHP Transformers
+  => Laravel Fractal
+
+  ------------------------------------------------------------------ 
+  12:52 PM 01-31-2019
+  => Preparing the Laravel Project for Data Transforming
+     Section 29, Lecture 132
+
+  => spatie/laravel/fractal shit
+
+  ------------------------------------------------------------------ 
+  1:16 PM 01-31-2019
+  => Creating the Transformer for User
+     Section 29, Lecture 133
+
+  => Using transformer for the user
+
+  ------------------------------------------------------------------ 
+  1:26 PM 01-31-2019
+  => Creating the Transformer for Seller and Buyer
+     Section 29, Lecture 134
+
+  1:29 PM 01-31-2019
+  => Creating the Transformer for Category
+     Section 29, Lecture 135
+
+  1:32 PM 01-31-2019
+  => Creating the Transformer for Transaction
+     Section 29, Lecture 136
+
+  1:35 PM 01-31-2019
+  => Creating the Transformer for Product
+     Section 29, Lecture 137
+
+  1:39 PM 01-31-2019
+  => Linking the Models with its Respective Transformer
+     Section 29, Lecture 138
+
+  2:20 PM 01-31-2019
+  => Returning the New Transformed Responses
+     Section 29, Lecture 139
+
+  ------------------------------------------------------------------ 
+  3:32 PM 01-31-2019
+  => Understanding an Issue with Sorted Responses
+     Section 30, Lecture 141
+
+  => if using the model attribute is was correctly sorting bu if the fractal attribute is used then sorting was impossible
+
+  4:14 PM 01-31-2019
+  => Implementing the Solution Using Transformers
+     Section 30, Lecture 143
+
+  4:37 PM 01-31-2019
+  => Filtering Responses Based on Attributes
+     Section 30, Lecture 144
+
+  => allow to get the value or a subset of data. using the specified attributes
+  => get all the user that are validated and are approved
+  => using the query parameter
+
+  ------------------------------------------------------------------ 
+  4:54 PM 01-31-2019
+  => About Pagination
+     Section 31, Lecture 145
+
+  => the paginate static method only works on Eloquent not on the laravel collection
+
+  4:59 PM 01-31-2019
+  => Paginating Already Built Collections
+     Section 31, Lecture 146
+
+  => paginating some result
+
+  ------------------------------------------------------------------
+  4:26 PM 01-02-2019
+  => Allowing Custom Page Size
+     Section 31, Lecture 147
+
+  => allow a custom pagination size for the client
+  => restrictinh the maximum page size and the minimum page size.
+
+  ------------------------------------------------------------------
+  4:39 PM 01-02-2019
+  => Implementing the Cache System
+     Section 32, Lecture 148
+
+  => cacheng some info to save up some time into the database
+
+  4:51 PM 01-02-2019
+  => The Caching System and the Query Parameters
+     Section 32, Lecture 149
+
+  => Laravel ignoring the query parameter in the cache mode
+  => Sort first the query parameter before creating the data
+
+  ------------------------------------------------------------------
+  5:07 PM 01-02-2019
+  => What is and Why to Use HATEOAS
+     Section 33, Lecture 150
+
+  => Allow to navigate from API without any difficulties indeed.
+  => Linking entities with different Entities with HATEOS
+  => Provide different links that the client can use for acquiring the specific info
+
+ Content Negotation
+ => Provide the API to allow the client what they want to recieve by.

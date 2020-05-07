@@ -1,0 +1,69 @@
+version: "3"
+services:
+
+  # Laravel App
+  app:
+    build:
+      context: ./
+      dockerfile: ./.docker/app/Dockerfile
+    container_name: zphenapi-app
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    environment:
+      TZ: Europe/London
+      DB_PORT: 3306
+      DB_HOST: zphenapi-database
+    restart: unless-stopped
+    depends_on:
+      - database
+
+  # NginX
+  nginx:
+    build:
+      context: ./
+      dockerfile: ./.docker/nginx/Dockerfile
+    container_name: zphenapi-nginx
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - app
+    depends_on:
+      - app
+
+  # MySQL 5.7
+  database:
+    image: mysql:5.7
+    container_name: zphenapi-database
+    volumes:
+      - ~/.zphenapi-database-data:/var/lib/mysql
+    environment:
+      TZ: Europe/London
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+
+  # PhpMyAdmin
+  database-admin:
+    image: phpmyadmin/phpmyadmin:4.7
+    container_name: zphenapi-database-admin
+    environment:
+      PMA_HOST: zphenapi-database
+      PMA_PORT: 3306
+    ports:
+      - 8080:80
+    volumes:
+      - ~/.zphenapi-database-admin-data/sessions:/sessions
+    restart: unless-stopped
+    depends_on:
+      - database
+    links:
+      - database
