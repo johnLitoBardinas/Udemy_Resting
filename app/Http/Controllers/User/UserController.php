@@ -2,14 +2,28 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\ApiController;
-use App\Mail\UserCreated;
 use App\User;
+use App\Mail\UserCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Transformers\UserTransformer;
+use App\Http\Controllers\ApiController;
 
 class UserController extends ApiController
 {
+
+    /**
+     * Register the middleware
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Register the middleware.
+        $this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +32,7 @@ class UserController extends ApiController
     public function index()
     {
         $users = User::all();
-        return $this->showAll($users);    
+        return $this->showAll($users);
     }
 
     /**
@@ -105,7 +119,7 @@ class UserController extends ApiController
             if (!$user->isVerified()) {
                 return $this->errorResponse('Only verified users can modify the admin field', 409);
             }
-            
+
             $user->admin = $request->admin;
         }
 
@@ -145,7 +159,7 @@ class UserController extends ApiController
         return $this->showMessage('The account has been verified successfully');
     }
 
-    // 4:32 PM 01-30-2019 The resend verification token 
+    // 4:32 PM 01-30-2019 The resend verification token
     public function resend(User $user)
     {
         // verifying if the current instance of the user is not verified yet

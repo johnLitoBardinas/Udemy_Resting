@@ -2,16 +2,30 @@
 
 namespace App\Http\Controllers\Seller;
 
-use App\Http\Controllers\ApiController;
-use App\Product;
-use App\Seller;
 use App\User;
+use App\Seller;
+use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Storage;
+use App\Transformers\ProductTransformer;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SellerProductController extends ApiController
 {
+
+    /**
+     * Register the middleware
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Register the middleware.
+        $this->middleware('transform.input:' . ProductTransformer::class)->only(['store', 'update']);
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -84,7 +98,7 @@ class SellerProductController extends ApiController
         // checking if the $request has a status property [OC mode to match the value both in available and Unavailable]
         if ($request->has('status')) {
             $product->status = $request->status;
-     
+
             // checking if the product is available && product categories === 0 => error
             if ($product->isAvailable() && $product->categories()->count() == 0) {
                 return $this->errorResponse('An active product must have at least one category', 409);

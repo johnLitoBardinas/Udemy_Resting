@@ -5,9 +5,23 @@ namespace App\Http\Controllers\Category;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Transformers\CategoryTransformer;
 
 class CategoryController extends ApiController
 {
+
+    /**
+     * Register the middleware
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Register the middleware.
+        $this->middleware('transform.input:' . CategoryTransformer::class)->only(['store']);
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -74,7 +88,7 @@ class CategoryController extends ApiController
             return $this->errorResponse('You need to specify any different value to update', 422);
         }
 
-        // it change 
+        // it change
         // isDirty is true regarding if it only change in 1 field
         $category->save();
         return $this->showOne($category);

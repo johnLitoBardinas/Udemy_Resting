@@ -2,15 +2,28 @@
 
 namespace App\Http\Controllers\Product;
 
-use App\Http\Controllers\ApiController;
+use App\User;
 use App\Product;
 use App\Transaction;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ApiController;
+use App\Transformers\TransactionTransformer;
 
 class ProductBuyerTransactionController extends ApiController
 {
+
+    /**
+     * Register the middleware
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Register the middleware.
+        $this->middleware('transform.input:' . TransactionTransformer::class)->only(['store']);
+
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -18,7 +31,7 @@ class ProductBuyerTransactionController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Product $product, User $buyer) // User because it may be a newly purchase 
+    public function store(Request $request, Product $product, User $buyer) // User because it may be a newly purchase
     {
         $rules = [
             'quantity' => 'required|integer|min:1'
