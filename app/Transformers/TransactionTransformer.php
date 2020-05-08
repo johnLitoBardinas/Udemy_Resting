@@ -31,7 +31,7 @@ class TransactionTransformer extends TransformerAbstract
     */
     public static function originalAttribute($index)
     {
-        $attributes = 
+        $attributes =
             'identifier'    => 'id',
             'quantity'      => 'quantity',
             'buyer'         => 'buyer_id',
@@ -39,6 +39,25 @@ class TransactionTransformer extends TransformerAbstract
             'creationDate'  => 'created_at',
             'lastChange'    => 'updated_at',
             'deletedDate'   => 'deleted_at',
+        ];
+
+        return isset($attributes[$index]) ? $attributes[$index] : null;
+    }
+
+    /*
+        23:22 05-08-2020
+        Mapping Request field to the Model field.
+    */
+    public static function transformedAttribute($index)
+    {
+        $attributes =
+            'id'         => 'identifier',
+            'quantity'   => 'quantity',
+            'buyer_id'   => 'buyer',
+            'product_id' => 'product',
+            'created_at' => 'creationDate',
+            'updated_at' => 'lastChange',
+            'deleted_at' => 'deletedDate',
         ];
 
         return isset($attributes[$index]) ? $attributes[$index] : null;
