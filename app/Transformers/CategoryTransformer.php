@@ -17,7 +17,7 @@ class CategoryTransformer extends TransformerAbstract
         return [
             'identifier'    => (int)$category->id,
             'title'         => (string)$category->name,
-            'description'   => (string)$category->description,
+            'details'   => (string)$category->description,
             'creationDate'  => (string)$category->created_at,
             'lastChange'    => (string)$category->updated_at,
             'deletedDate'   => isset($category->deleted_at) ? (string)$category->deleted_at : null,
@@ -56,7 +56,7 @@ class CategoryTransformer extends TransformerAbstract
         $attributes = [
             'identifier'    => 'id',
             'title'         => 'name',
-            'description'   => 'description',
+            'details'   => 'description',
             'creationDate'  => 'created_at',
             'lastChange'    => 'updated_at',
             'deletedDate'   => 'deleted_at',
@@ -74,7 +74,7 @@ class CategoryTransformer extends TransformerAbstract
         $attributes = [
             'id'          => 'identifier',
             'name'        => 'title',
-            'description' => 'description',
+            'description' => 'details',
             'created_at'  => 'creationDate',
             'updated_at'  => 'lastChange',
             'deleted_at'  => 'deletedDate',
