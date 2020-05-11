@@ -9,7 +9,7 @@ ntcox
 
 ------------------------------------------------------------------
 
-M:M relationship  is belongsToMany() 
+M:M relationship  is belongsToMany()
 
 ! as always a many to many relationship requires a pivot table to be implemented
 
@@ -22,13 +22,13 @@ M:M relationship  is belongsToMany()
 11:47 AM 01-07-2019
 
 Types of errorshit
-  
+
   ~ ValidationException     		=> form validation exception
   ~ ModelNotFoundException  		=> specified model intance not found
   ~ AuthenticationException 		=> a user model intance was not authenticate to perform the task
    -> Authentication = allow maka pasok
    -> Authorization  = allow gawin ang bagay na to
-  ~ AuthorizationException 			=> user model instance was not authorize to do the thing he/she want 
+  ~ AuthorizationException 			=> user model instance was not authorize to do the thing he/she want
   ~ NotFoundHttpException   	 	=> throw when the specified endpoint was undefined
   ~ MethodNotAllowedHttpException 	=> the HTTP request for a particular endpoint was wrong
 
@@ -73,7 +73,7 @@ Types of errorshit
 
   ------------------------------------------------------------------
 
-  3:53 PM 01-07-2019 
+  3:53 PM 01-07-2019
   => Implementing the Store Method for CategoryController
 	 Section 18, Lecture 79
 
@@ -89,14 +89,14 @@ Types of errorshit
   => Implementing the Index Method for ProductControllerSection 19, Lecture 82
 
   ------------------------------------------------------------------
-  
+
   10:43 AM 01-08-2019
-  => exercise shit  
+  => exercise shit
 
   ------------------------------------------------------------------
 
   11:12 AM 01-08-2019
-  => Complex controller 
+  => Complex controller
      ~ Controller that interact with multiple resources
   Implementing the Index Method for TransactionCategoryController
   Section 21, Lecture 86
@@ -140,11 +140,11 @@ Types of errorshit
   ------------------------------------------------------------------
   2:59 PM 01-22-2019
   => Implementing the BuyerCategory Controller
-  => Using a specific buyer then return all the categories regards on the transactions -> products.category_id 
+  => Using a specific buyer then return all the categories regards on the transactions -> products.category_id
 
   ------------------------------------------------------------------
   3:20 PM 01-22-2019
-  => Implementing the CategoryProductController index method 
+  => Implementing the CategoryProductController index method
   => allow to retrieve ALL products of a particular category
 
   ------------------------------------------------------------------
@@ -178,7 +178,7 @@ Types of errorshit
   => Using 1 seller gives the list of all transactions related on his/her
 
   ------------------------------------------------------------------
-  1:50 AM 01-23-2019  
+  1:50 AM 01-23-2019
   => Implementing the Index Method for SellerCategoryController
      Section 24, Lecture 98
   => 1 Seller return all of his/her Categories
@@ -262,7 +262,7 @@ Types of errorshit
 
   => create a endpoint that accept the user verification_token
      then check if the verification token exist with that particular email_address
-     then update the user properties to become verified 
+     then update the user properties to become verified
      and lastly remove the verification token so that the given user cannot make any further request for verifying its account at the system
 
   ------------------------------------------------------------------
@@ -270,11 +270,11 @@ Types of errorshit
   => Creating the Laravel Mailable for User Created
      Section 27, Lecture 117
 
-  ------------------------------------------------------------------   
+  ------------------------------------------------------------------
   Implementing the UserCreated Mailable
   Section 27, Lecture 118
 
-  ------------------------------------------------------------------   
+  ------------------------------------------------------------------
   2:50 PM 01-30-2019
   => Send Verification Email Using Events
      Section 27, Lecture 119
@@ -282,28 +282,28 @@ Types of errorshit
   => using the mailable to send the email into the user email address
   => every time when the user has been successfully created
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   3:08 PM 01-30-2019
   => Solving the Problem with Factories
      Section 27, Lecture 120
 
   => Solving the error upon running the factories the code base will be sending some useless emails
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   4:11 PM 01-30-2019
   => Creating the Mailable for User Mail Changed
      Section 27, Lecture 121
 
   => Implementation
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   4:16 PM 01-30-2019
   => Send Verification for Email Changed Using Events
      Section 27, Lecture 123
 
   => fire an eevent just when the user email was changed
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   4:26 PM 01-30-2019
   => Re-sending the Verification Email If Requested
      Section 27, Lecture 124
@@ -311,7 +311,7 @@ Types of errorshit
   => Just sending some verification token only if the user could'nt get the 1st email verification
      and the current user is not yet verified
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   4:53 PM 01-30-2019
   => Dealing with Failing-Prone Actions
      Section 27, Lecture 125
@@ -319,7 +319,7 @@ Types of errorshit
   => Allow us to handle failing prone actions retry different action waiting for a result.
   => Ex. Sending email [service maybe error]
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   5:30 PM 01-30-2019
   => Using Laravel Markdown Mailables
      Section 27, Lecture 126
@@ -327,24 +327,24 @@ Types of errorshit
   => Creting a laravel markdown mailable
   ex. php artisan make:mail Test -m emails.test
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   10:47 AM 01-31-2019
   => About the Middleware and How it Works in Laravel
      Section 28, Lecture 127
 
   => The beauty of middleware shit
   => act over the request
-  => act over the response 
+  => act over the response
   => or maybe both in the cycle
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   11:38 AM 01-31-2019
   => Creating a Custom Middleware
      Section 28, Lecture 128
 
   => create a middleware that adds a signature in every response
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   12:46 PM 01-31-2019
   => About Transformers and Why to Use It
      Section 29, Lecture 131
@@ -352,21 +352,21 @@ Types of errorshit
   => Transformation of the PHP Transformers
   => Laravel Fractal
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   12:52 PM 01-31-2019
   => Preparing the Laravel Project for Data Transforming
      Section 29, Lecture 132
 
   => spatie/laravel/fractal shit
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   1:16 PM 01-31-2019
   => Creating the Transformer for User
      Section 29, Lecture 133
 
   => Using transformer for the user
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   1:26 PM 01-31-2019
   => Creating the Transformer for Seller and Buyer
      Section 29, Lecture 134
@@ -391,7 +391,7 @@ Types of errorshit
   => Returning the New Transformed Responses
      Section 29, Lecture 139
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   3:32 PM 01-31-2019
   => Understanding an Issue with Sorted Responses
      Section 30, Lecture 141
@@ -410,7 +410,7 @@ Types of errorshit
   => get all the user that are validated and are approved
   => using the query parameter
 
-  ------------------------------------------------------------------ 
+  ------------------------------------------------------------------
   4:54 PM 01-31-2019
   => About Pagination
      Section 31, Lecture 145
@@ -456,3 +456,9 @@ Types of errorshit
 
  Content Negotation
  => Provide the API to allow the client what they want to recieve by.
+
+  ------------------------------------------------------------------
+
+02:38 05-12-2020
+
+=> Section 35 number: 165 -> 168 returning internal 500 error rather than expected output.
