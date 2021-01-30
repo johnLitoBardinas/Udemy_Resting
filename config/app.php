@@ -165,8 +165,9 @@ return [
         /*
          * Package Service Providers...
          */
+        // unable to install due to packagist putang inang instructor adi aayat kita sa composer.json uda puta ka
+        Laravel\Laravel\Passport\PassportServiceProvider::class
         Spatie\Fractal\FractalServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
